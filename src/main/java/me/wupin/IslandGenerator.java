@@ -31,9 +31,7 @@ public class IslandGenerator extends ChunkGenerator {
         int worldZ = chunkZ * 16;
         for (int x = 0; x < 16; x++) {
             for (int z = 0; z < 16; z++) {
-
-                int SEA_LEVEL = 98;
-                for (int y = 0; y < SEA_LEVEL; y++) {
+                for (int y = 0; y < 98; y++) {
                     if (chunkData.getType(x, y, z).isAir()) {
                         chunkData.setBlock(x, y, z, Material.WATER);
                     }
