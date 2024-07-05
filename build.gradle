@@ -1,0 +1,40 @@
+plugins {
+    id 'java'
+}
+
+group = 'me.wupin'
+version = '1.0.0'
+
+jar {
+    archiveFileName = "IslandGenerator.jar"
+    destinationDirectory = file("C:\\Users\\wupin\\Desktop\\TEST SERVER\\plugins\\SuperiorSkyblock2\\world-generator")
+}
+
+repositories {
+    mavenCentral()
+    maven { url = uri("https://repo.papermc.io/repository/maven-public/") }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots/' }
+    maven { url 'https://repo.bg-software.com/repository/nms/' }
+    maven { url 'https://repo.bg-software.com/repository/api/' }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT"
+    compileOnly "org.projectlombok:lombok:1.18.30"
+    annotationProcessor "org.projectlombok:lombok:1.18.30"
+    compileOnly 'com.bgsoftware:SuperiorSkyblockAPI:2024.1'
+}
+
+java {
+    toolchain.languageVersion.set(JavaLanguageVersion.of(21))
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+}
